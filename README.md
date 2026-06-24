@@ -47,8 +47,66 @@ train_test.py                  训练入口
 evaluate_agent.py              评估入口
 watch_agent.py                 观看入口
 environment.yml                环境依赖参考
+requirements.txt               pip 依赖文件
 README.md                      项目说明
 ```
+
+## 环境配置
+
+建议使用 Python 3.11。默认安装 CPU 版 PyTorch，适合没有 NVIDIA GPU 或只是入门学习的同学。
+
+### 方式一：使用 pip
+
+创建虚拟环境：
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\activate
+python -m pip install --upgrade pip
+```
+
+先安装 CPU 版 PyTorch：
+
+```powershell
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+```
+
+再安装项目依赖：
+
+```powershell
+pip install -r requirements.txt
+```
+
+如果要使用 GPU，请不要使用上面的 CPU 版 torch 命令。请根据自己的 CUDA 版本，到 PyTorch 官网选择对应安装命令，然后再执行：
+
+```powershell
+pip install -r requirements.txt
+```
+
+### 方式二：使用 conda
+
+也可以使用项目里的 `environment.yml`：
+
+```powershell
+conda env create -f environment.yml
+conda activate rl-maze
+```
+
+如果使用 conda 后发现没有安装 torch，可以继续安装 CPU 版：
+
+```powershell
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+```
+
+### 检查环境
+
+安装完成后，可以运行：
+
+```powershell
+python -c "import torch; import stable_baselines3; import gym; import gym_minigrid; print('ok')"
+```
+
+如果输出 `ok`，说明基础依赖已经可用。
 
 ## 模型介绍
 

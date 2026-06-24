@@ -1,0 +1,16 @@
+# Install CPU PyTorch first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#
+# For GPU training, install the PyTorch build that matches your CUDA version
+# from https://pytorch.org/get-started/locally/ before installing this file.
+
+stable-baselines3>=2.3.0
+rl_zoo3>=2.4.0
+huggingface_sb3>=3.0
+gym==0.26.2
+gym-minigrid==1.2.2
+gymnasium>=0.29.1
+numpy>=1.24
+tensorboard>=2.14
+tqdm>=4.66
+rich>=13.0
