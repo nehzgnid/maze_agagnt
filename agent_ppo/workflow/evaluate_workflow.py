@@ -46,8 +46,8 @@ def _vecnormalize_path(exp_id: int, use_best: bool = False) -> Path:
     return stats_dir / "vecnormalize.pkl"
 
 
-def _make_env():
-    env = gym.make(Config.ENV_ID)
+def _make_env(render_mode: str | None = None):
+    env = gym.make(Config.ENV_ID, render_mode=render_mode)
     env = AlignedMiniGridRewardWrapper(env)
     env = LegacyFlatObsWrapper(env)
     return env

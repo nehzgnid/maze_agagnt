@@ -157,10 +157,19 @@ python evaluate_agent.py --exp-id 1 --episodes 20
 python evaluate_agent.py --exp-id 1 --episodes 20 --best
 ```
 
-观看运行效果：
+打开可视化界面观看运行效果：
 
 ```powershell
 python watch_agent.py --exp-id 1
+```
+
+可视化界面支持：
+
+```text
+Space  开始/暂停
+S      单步执行
+R      重置回合
+Esc    退出
 ```
 
 无渲染运行：
