@@ -40,31 +40,6 @@ class RLZooPPO:
             str(self.hyperparams_file),
         ]
 
-    def enjoy_cmd(
-        self,
-        no_render: bool = False,
-        n_timesteps: int | None = None,
-        exp_id: int | None = Config.EVAL_EXP_ID,
-    ) -> list[str]:
-        cmd = [
-            sys.executable,
-            "-m",
-            "rl_zoo3.enjoy",
-            "--algo",
-            self.algo,
-            "--env",
-            self.env_id,
-            "-f",
-            str(self.log_folder),
-        ]
-        if exp_id is not None:
-            cmd.extend(["--exp-id", str(exp_id)])
-        if no_render:
-            cmd.append("--no-render")
-        if n_timesteps is not None:
-            cmd.extend(["--n-timesteps", str(n_timesteps)])
-        return cmd
-
     def run(self, cmd: list[str]) -> None:
         print(" ".join(cmd))
         subprocess.run(cmd, cwd=Config.ROOT_DIR, check=True)
@@ -85,7 +60,7 @@ class Algorithm:
                     "observation_space": env.observation_space,
                     "action_space": env.action_space,
                 },
-                device="auto",
+                device="cpu",
             )
             self.model.verbose = verbose
         else:
@@ -115,7 +90,7 @@ class Algorithm:
                 "ortho_init": Config.ORTHO_INIT,
             },
             tensorboard_log=str(Config.ROOT_DIR / "runs"),
-            device="auto",
+            device="cpu",
         )
 
     def learn(self, total_timesteps: int, callback=None, progress_bar: bool = True):

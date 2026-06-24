@@ -77,6 +77,7 @@ def evaluate(exp_id: int = Config.EVAL_EXP_ID, episodes: int = 20, max_steps: in
             "lr_schedule": lambda _: 0.0,
             "clip_range": lambda _: 0.0,
         },
+        device="cpu",
     )
 
     rewards = []

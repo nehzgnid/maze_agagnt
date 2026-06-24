@@ -63,7 +63,7 @@ conda activate rl-maze
 python -m pip install --upgrade pip
 ```
 
-安装 CPU 版 PyTorch：
+安装 CPU 版 PyTorch（如果要使用 GPU，请不要使用上面的 CPU 版 torch 命令。请根据自己的 CUDA 版本，到 PyTorch 官网选择对应安装命令）：
 
 ```powershell
 pip install torch --index-url https://download.pytorch.org/whl/cpu
@@ -75,11 +75,6 @@ pip install torch --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
 ```
 
-如果要使用 GPU，请不要使用上面的 CPU 版 torch 命令。请根据自己的 CUDA 版本，到 PyTorch 官网选择对应安装命令。安装 GPU 版 PyTorch 后，再安装项目依赖：
-
-```powershell
-pip install -r requirements.txt
-```
 
 ### 检查环境
 
@@ -308,5 +303,4 @@ python watch_agent.py --exp-id 1 --no-render --n-timesteps 1000
 - `logs/` 和 `runs/` 是训练产生的运行产物，当前已清理，不属于核心源码。
 - 重新训练后会自动生成新的模型、评估文件和 TensorBoard 日志。
 - 如果改变观测维度，需要同步检查 `Config.OBS_DIM`、模型输入层和 wrapper 输出。
-- 当前项目更偏实验工程，不是完整比赛提交模板。
 - 运行失败时优先检查 Python 环境、MiniGrid/Gym/SB3 版本是否匹配。

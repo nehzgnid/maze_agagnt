@@ -23,7 +23,9 @@ class Agent:
         self.algorithm.run(self.algorithm.train_cmd())
 
     def watch(self, no_render=False, n_timesteps=None):
-        self.algorithm.run(self.algorithm.enjoy_cmd(no_render=no_render, n_timesteps=n_timesteps))
+        from agent_ppo.workflow.watch_workflow import workflow
+
+        workflow(no_render=no_render, n_timesteps=n_timesteps, exp_id=Config.EVAL_EXP_ID)
 
     def describe(self):
         return self.model_spec.describe()
