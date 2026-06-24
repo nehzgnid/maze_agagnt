@@ -53,49 +53,39 @@ README.md                      项目说明
 
 ## 环境配置
 
-建议使用 Python 3.11。默认安装 CPU 版 PyTorch，适合没有 NVIDIA GPU 或只是入门学习的同学。
+建议使用 conda 创建独立虚拟环境。项目默认安装 CPU 版 PyTorch，适合没有 NVIDIA GPU 或只是入门学习的同学。
 
-### 方式一：使用 pip
+### 方式一：使用 environment.yml
 
-创建虚拟环境：
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\activate
-python -m pip install --upgrade pip
-```
-
-先安装 CPU 版 PyTorch：
-
-```powershell
-pip install torch --index-url https://download.pytorch.org/whl/cpu
-```
-
-再安装项目依赖：
-
-```powershell
-pip install -r requirements.txt
-```
-
-如果要使用 GPU，请不要使用上面的 CPU 版 torch 命令。请根据自己的 CUDA 版本，到 PyTorch 官网选择对应安装命令，然后再执行：
-
-```powershell
-pip install -r requirements.txt
-```
-
-### 方式二：使用 conda
-
-也可以使用项目里的 `environment.yml`：
+项目提供了 `environment.yml`，可以直接创建 conda 环境：
 
 ```powershell
 conda env create -f environment.yml
 conda activate rl-maze
 ```
 
-如果使用 conda 后发现没有安装 torch，可以继续安装 CPU 版：
+如果创建环境后发现没有安装 torch，可以在 `rl-maze` 环境中继续安装 CPU 版 PyTorch：
 
 ```powershell
 pip install torch --index-url https://download.pytorch.org/whl/cpu
+```
+
+### 方式二：手动创建 conda 环境
+
+也可以手动创建环境，然后安装依赖：
+
+```powershell
+conda create -n rl-maze python=3.11 -y
+conda activate rl-maze
+python -m pip install --upgrade pip
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+pip install -r requirements.txt
+```
+
+如果要使用 GPU，请不要使用上面的 CPU 版 torch 命令。请根据自己的 CUDA 版本，到 PyTorch 官网选择对应安装命令。安装 GPU 版 PyTorch 后，再执行：
+
+```powershell
+pip install -r requirements.txt
 ```
 
 ### 检查环境
