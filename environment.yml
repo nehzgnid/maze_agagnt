@@ -1,0 +1,12 @@
+name: rl-maze
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - "rl_zoo3>=2.4.0"
+      - "huggingface_sb3>=3.0"
+      - "gym==0.26.2"
+      - "gym-minigrid==1.2.2"
+      - "tensorboard>=2.14"

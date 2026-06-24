@@ -1,0 +1,44 @@
+# Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Reinforcement learning outputs
+logs/
+runs/
+checkpoints/
+models/
+*.ckpt
+*.pt
+*.pth
+*.pkl
+*.zip
+*.npz
+*.monitor.csv
+events.out.tfevents.*
+
+# Local editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.bak

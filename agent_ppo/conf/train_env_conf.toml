@@ -1,0 +1,40 @@
+algo = "ppo"
+env = "MiniGrid-KeyCorridorS3R1-v0"
+organization = "sb3"
+log_folder = "logs"
+hyperparams_file = "agent_ppo/conf/ppo_minigrid.yml"
+
+[reward]
+success_base = 1.0
+time_decay = 0.9
+failure = 0.0
+scale = 1.0
+bias = 0.0
+
+[model]
+policy = "MlpPolicy"
+actor_hidden_layers = [64, 64]
+critic_hidden_layers = [64, 64]
+activation_fn = "Tanh"
+ortho_init = true
+
+[train]
+n_timesteps = 500000
+n_envs = 8
+n_steps = 128
+batch_size = 64
+n_epochs = 10
+learning_rate = 0.00025
+gamma = 0.99
+gae_lambda = 0.95
+clip_range = 0.2
+ent_coef = 0.0
+vf_coef = 0.5
+max_grad_norm = 0.5
+normalize = true
+norm_obs = true
+norm_reward = false
+train_seed = 0
+eval_seed = 10000
+eval_freq_steps = 25000
+n_eval_episodes = 20

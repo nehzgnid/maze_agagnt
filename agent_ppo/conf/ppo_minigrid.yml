@@ -1,0 +1,22 @@
+MiniGrid-KeyCorridorS3R1-v0:
+  env_wrapper:
+    - agent_ppo.feature.reward_wrapper.AlignedMiniGridRewardWrapper
+    - agent_ppo.feature.preprocessor.LegacyFlatObsWrapper
+  n_timesteps: !!float 5e5
+  policy: MlpPolicy
+  policy_kwargs: "dict(net_arch=dict(pi=[64, 64], vf=[64, 64]), activation_fn=nn.Tanh, ortho_init=True)"
+  n_envs: 8
+  n_steps: 128
+  batch_size: 64
+  n_epochs: 10
+  learning_rate: 0.00025
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  normalize: true
+  normalize_kwargs:
+    norm_obs: true
+    norm_reward: false
